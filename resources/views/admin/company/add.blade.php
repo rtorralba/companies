@@ -20,7 +20,7 @@
     </form>
 
     {!! Form::open([
-        'route' => 'admin.companies.add'
+        'route' => 'companies.add'
     ]) !!}
 
     <div class="form-group">

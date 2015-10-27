@@ -3,7 +3,7 @@
         <title>App Name - @yield('title')</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
-        <link href="/assets/css/starter-template.css" rel="stylesheet">
+        {!! HTML::style('/assets/css/starter-template.css'); !!}}
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">

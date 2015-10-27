@@ -18,6 +18,11 @@ class CompanyController extends Controller
         return view('admin.company.add');
     }
 
+    /**
+   * Display a listing of the resource.
+   * @Post("add", as="admin.company.add")
+   * @return Response
+   */
     public function postAdd(Request $request)
     {
         $this->validate($request, [
