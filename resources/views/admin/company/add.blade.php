@@ -25,7 +25,7 @@
 
     <div class="form-group">
         {!! Form::label('providers[]', 'Providers:', ['class' => 'control-label']) !!}
-        {!! Form::select('providers[]', $providers, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
+        {!! Form::select('providers[]', $companies, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
     </div>
 
     {!! Form::submit('Add company', ['class' => 'btn btn-primary']) !!}

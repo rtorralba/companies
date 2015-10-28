@@ -28,3 +28,13 @@ Route::get('admin/companies/add/', 'Admin\CompanyController@getAdd');
 Route::post('admin/companies/add/', ['as' => 'admin.companies.add', 'uses' => 'Admin\CompanyController@postAdd']);
 
 Route::delete('admin/companies/delete/', ['as' => 'admin.companies.delete', 'uses' => 'Admin\CompanyController@delete']);
+
+Route::get('admin/agreements/{companyId}', ['as' => 'admin.agreements.index', 'uses' => 'Admin\AgreementController@index']);
+
+Route::get('admin/agreements/edit/{id}', ['as' => 'admin.agreements.edit.get', 'uses' => 'Admin\AgreementController@getEdit']);
+Route::post('admin/agreements/edit/', ['as' => 'admin.agreements.edit.post', 'uses' => 'Admin\AgreementController@postEdit']);
+
+Route::get('admin/agreements/add/{companyId}', ['as' => 'admin.agreements.add.get', 'uses' => 'Admin\AgreementController@getAdd']);
+Route::post('admin/agreements/add/', ['as' => 'admin.agreements.add.post', 'uses' => 'Admin\AgreementController@postAdd']);
+
+Route::delete('admin/agreements/delete/', ['as' => 'admin.agreements.delete', 'uses' => 'Admin\AgreementController@delete']);

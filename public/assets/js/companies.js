@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-    $('.datatable').DataTable({
+    $('#companies-datatable').DataTable({
         "paging":   false,
         "info":   false,
         "columns": [
@@ -7,6 +7,18 @@ $( document ).ready(function() {
             { "width": "1%", 'orderable': false },
             null,
             null,
+            { "width": "1%", 'orderable': false }
+        ],
+        "order": [[ 2, "desc" ]]
+    });
+
+    $('#agreements-datatable').DataTable({
+        "paging":   false,
+        "info":   false,
+        "columns": [
+            { "width": "1%", 'orderable': false },
+            { "width": "1%", 'orderable': false },
+            null
         ],
         "order": [[ 2, "desc" ]]
     });

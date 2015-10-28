@@ -23,12 +23,12 @@
 
     <div class="form-group">
         {!! Form::label('clients[]', 'Clients:', ['class' => 'control-label']) !!}
-        {!! Form::select('clients[]', $companies, $companies_selected, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
+        {!! Form::select('clients[]', $companies, $clients_selected, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('providers[]', 'Providers:', ['class' => 'control-label']) !!}
-        {!! Form::select('providers[]', $providers, $providers_selected, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
+        {!! Form::select('providers[]', $companies, $providers_selected, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
     </div>
 
     {!! Form::submit('Update company', ['class' => 'btn btn-primary']) !!}

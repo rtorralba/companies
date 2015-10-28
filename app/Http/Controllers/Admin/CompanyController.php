@@ -18,11 +18,9 @@ class CompanyController extends Controller
     public function getAdd()
     {
         $companies = Company::lists('name', 'id');
-        $providers = $companies;
-        $data = array(
-            'companies' => $companies,
-            'providers' => $providers
-        );
+        $data = [
+            'companies' => $companies
+        ];
         return view('admin.company.add', $data);
     }
 
@@ -36,19 +34,20 @@ class CompanyController extends Controller
 
             $input = $request->all();
 
-            $company = new Company();
-
-            $company->name = $request->name;
-            $company->cif = $request->cif;
+            $company = Company::create($input);
 
             $company->save();
 
-            $company->clients()->sync($request->clients);
-            $company->providers()->sync($request->providers);
+            if($request->clients){
+                $company->clients()->sync($request->clients);
+            }
+            if($request->providers){
+                $company->providers()->sync($request->providers);
+            }
 
             Session::flash('ok_message', 'Company successfully added!');
             return redirect()->route('admin.companies.index');
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             Session::flash('error_message', 'Error adding company');
             return redirect()->back();
         }
@@ -59,16 +58,14 @@ class CompanyController extends Controller
         $company = Company::find($id);
 
         $companies = Company::lists('name', 'id');
-        $companies_selected = $company->clients()->getRelatedIds()->all();
+        $clients_selected = $company->clients()->getRelatedIds()->all();
 
-        $providers = $companies;
         $providers_selected = $company->providers()->getRelatedIds()->all();
 
         $data = array(
             'company' => $company,
             'companies' => $companies,
-            'providers' => $providers,
-            'companies_selected' => $companies_selected,
+            'clients_selected' => $clients_selected,
             'providers_selected' => $providers_selected
         );
         return view('admin.company.edit', $data);
@@ -88,16 +85,20 @@ class CompanyController extends Controller
             $company->name = $request->name;
             $company->cif = $request->cif;
 
-            $company->clients()->sync($request->clients);
-            $company->providers()->sync($request->providers);
+            if($request->clients){
+                $company->clients()->sync($request->clients);
+            }
+            if($request->providers){
+                $company->providers()->sync($request->providers);
+            }
+
+            Session::flash('ok_message', 'Company successfully added!');
 
             $company->save();
 
             Session::flash('ok_message', 'Company successfully updated!');
             return redirect()->route('admin.companies.index');
         } catch (\Exception $e) {
-            var_dump($e);
-            die();
             Session::flash('error_message', 'Error updating company');
             return redirect()->back();
         }
