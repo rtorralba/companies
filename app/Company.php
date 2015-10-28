@@ -11,16 +11,16 @@ class Company extends Model
 
     public function clients()
     {
-        return $this->belongsToMany('App\Company', 'companies_clients', 'company_id', 'client_id');
+        return $this->belongsToMany('App\Company', 'companies_relations', 'provider_id', 'client_id');
     }
 
     public function providers()
     {
-        return $this->belongsToMany('App\Company', 'companies_providers', 'company_id', 'provider_id');
+        return $this->belongsToMany('App\Company', 'companies_relations', 'client_id', 'provider_id');
     }
 
     public function agreements()
     {
-        return $this->belongsToMany('App\Agreements', 'companies_agreements', 'company_id', 'agreement_id');
+        return $this->belongsToMany('App\Agreement', 'companies_agreements', 'company_id', 'agreement_id');
     }
 }

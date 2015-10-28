@@ -23,23 +23,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/admin">Companies Admin</a>
+                    <a class="navbar-brand" href="/">Companies Site</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="/admin">Home</a></li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Companies <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="/admin/companies/">List</a>
-                                </li>
-                                <li>
-                                    <a href="/admin/companies/add">Add</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="/">Public site</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/admin">Administrator</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
           </div>
@@ -55,6 +44,6 @@
         {!! HTML::script('https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js') !!}
         {!! HTML::script('//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js') !!}
         {!! HTML::script('/assets/js/ie10-viewport-bug-workaround.js') !!}
-        {!! HTML::script('/assets/js/admin/companies.js') !!}
+        {!! HTML::script('/assets/js/site/companies.js') !!}
     </body>
 </html>

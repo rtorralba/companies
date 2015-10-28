@@ -9,7 +9,7 @@
             <th></th>
             <th></th>
             <th></th>
-            <th class="hidden-sm">CIF</th>
+            <th>CIF</th>
             <th>Name</th>
         </thead>
         <tbody>
@@ -30,7 +30,7 @@
                             <span class="glyphicon glyphicon-thumbs-up"></span>
                         </a>
                     </td>
-                    <td class="hidden-sm">{{ $company->cif }}</td>
+                    <td>{{ $company->cif }}</td>
                     <td>{{ $company->name }}</td>
                 </tr>
             @endforeach

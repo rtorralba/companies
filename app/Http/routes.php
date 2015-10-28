@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['as' => 'site.index', 'uses' => 'Site\MainController@index']);
+Route::get('/company/details/{id}', ['as' => 'site.company.details', 'uses' => 'Site\MainController@getDetails']);
 
 Route::get('/admin', function () {
     return view('admin.index');
