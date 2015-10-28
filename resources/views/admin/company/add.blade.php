@@ -10,12 +10,12 @@
 
     <div class="form-group">
         {!! Form::label('cif', 'CIF:', ['class' => 'control-label']) !!}
-        {!! Form::text('cif', null, ['class' => 'form-control']) !!}
+        {!! Form::text('cif', null, ['class' => 'form-control', 'required' => 'required']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('name', 'Name:', ['class' => 'control-label']) !!}
-        {!! Form::text('name', null, ['class' => 'form-control']) !!}
+        {!! Form::text('name', null, ['class' => 'form-control', 'required' => 'required']) !!}
     </div>
 
     <div class="form-group">

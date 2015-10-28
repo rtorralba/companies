@@ -37,5 +37,11 @@
         </tbody>
     </table>
 
+    <div class="row">
+        <a href="{!! URL::route('admin.companies.add') !!}" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus"></span> Add
+        </a>
+    </div>
+
     {!! $companies->render() !!}
 @endsection

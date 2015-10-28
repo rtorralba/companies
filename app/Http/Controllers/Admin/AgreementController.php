@@ -38,7 +38,6 @@ class AgreementController extends Controller
         try {
             $this->validate($request, [
                 'name' => 'required',
-                'description' => 'required',
                 'company_id'
             ]);
 
@@ -84,8 +83,7 @@ class AgreementController extends Controller
         try {
             $this->validate($request, [
                 'id' => 'required',
-                'name' => 'required',
-                'description' => 'required',
+                'name' => 'required'
             ]);
 
             $agreement = Agreement::find($request->id);

@@ -11,6 +11,7 @@
 |
 */
 
+// Public site
 Route::get('/', ['as' => 'site.index', 'uses' => 'Site\MainController@index']);
 Route::get('/company/details/{id}', ['as' => 'site.company.details', 'uses' => 'Site\MainController@getDetails']);
 
@@ -18,6 +19,7 @@ Route::get('/admin', function () {
     return view('admin.index');
 });
 
+// Admin
 Route::get('admin/companies/', ['as' => 'admin.companies.index', 'uses' => 'Admin\CompanyController@index']);
 
 Route::get('admin/companies/edit/{id}', ['as' => 'admin.companies.edit.get', 'uses' => 'Admin\CompanyController@getEdit']);
