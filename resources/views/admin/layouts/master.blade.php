@@ -1,9 +1,10 @@
 <html>
     <head>
         <title>App Name - @yield('title')</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-
-        {!! HTML::style('/assets/css/starter-template.css'); !!}}
+        {!! HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'); !!}
+        {!! HTML::style('https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css'); !!}
+        {!! HTML::style('/assets/css/starter-template.css'); !!}
+        {!! HTML::style('/assets/css/companies.css'); !!}
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -44,15 +45,23 @@
                     @endforeach
                 </div>
             @endif
-            @if(Session::has('flash_message'))
+            @if(Session::has('ok_message'))
                 <div class="alert alert-success">
-                    {{ Session::get('flash_message') }}
+                    {{ Session::get('ok_message') }}
                 </div>
             @endif
+            @if(Session::has('error_message'))
+                <div class="alert alert-danger">
+                    {{ Session::get('error_message') }}
+                </div>
+            @endif
+            @include('admin.layouts.includes.modals.delete')
             @yield('content')
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-        <script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+        {!! HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js') !!}
+        {!! HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js') !!}
+        {!! HTML::script('https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js') !!}
+        {!! HTML::script('/assets/js/ie10-viewport-bug-workaround.js') !!}
+        {!! HTML::script('/assets/js/companies.js') !!}
     </body>
 </html>
