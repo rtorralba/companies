@@ -48,7 +48,21 @@ class CompanyController extends Controller
     public function getEdit($id)
     {
         $company = Company::find($id);
-        return view('admin.company.edit', ['company' => $company]);
+
+        $companies = Company::lists('name', 'id');
+        $companies_selected = $company->clients()->getRelatedIds()->all();
+
+        $providers = $companies;
+        $providers_selected = $company->providers()->getRelatedIds()->all();
+
+        $data = array(
+            'company' => $company,
+            'companies' => $companies,
+            'providers' => $providers,
+            'companies_selected' => $companies_selected,
+            'providers_selected' => $providers_selected
+        );
+        return view('admin.company.edit', $data);
     }
 
     public function postEdit(Request $request)
@@ -64,12 +78,17 @@ class CompanyController extends Controller
 
             $company->name = $request->name;
             $company->cif = $request->cif;
+
+            $company->clients()->sync($request->clients);
+            $company->providers()->sync($request->providers);
             
             $company->save();
 
             Session::flash('ok_message', 'Company successfully updated!');
             return redirect()->route('admin.companies.index');
         } catch (\Exception $e) {
+            var_dump($e);
+            die();
             Session::flash('error_message', 'Error updating company');
             return redirect()->back();
         }
