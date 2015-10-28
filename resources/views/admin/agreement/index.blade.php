@@ -3,6 +3,11 @@
 @section('title', 'Agreements List')
 
 @section('content')
+    <div class="row">
+        <a href="{!! URL::route('admin.companies.index') !!}" class="btn btn-default">
+            <span class="glyphicon glyphicon-arrow-left"></span> Return to companies list
+        </a>
+    </div>
     <h1>Agreements List</h1>
     <div class="row">
         <table id="agreements-datatable">

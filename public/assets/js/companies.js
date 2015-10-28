@@ -5,11 +5,11 @@ $( document ).ready(function() {
         "columns": [
             { "width": "1%", 'orderable': false },
             { "width": "1%", 'orderable': false },
+            { "width": "1%", 'orderable': false },
             null,
-            null,
-            { "width": "1%", 'orderable': false }
+            null
         ],
-        "order": [[ 2, "desc" ]]
+        "order": [[ 3, "desc" ]]
     });
 
     $('#agreements-datatable').DataTable({

@@ -11,5 +11,5 @@ abstract class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected $pageElements = 15;
+    protected $pageElements = 3;
 }
