@@ -17,7 +17,13 @@ class CompanyController extends Controller
 
     public function getAdd()
     {
-        return view('admin.company.add');
+        $companies = Company::lists('name', 'id');
+        $providers = $companies;
+        $data = array(
+            'companies' => $companies,
+            'providers' => $providers
+        );
+        return view('admin.company.add', $data);
     }
 
     public function postAdd(Request $request)
@@ -34,12 +40,15 @@ class CompanyController extends Controller
 
             $company->name = $request->name;
             $company->cif = $request->cif;
-            
+
             $company->save();
+
+            $company->clients()->sync($request->clients);
+            $company->providers()->sync($request->providers);
 
             Session::flash('ok_message', 'Company successfully added!');
             return redirect()->route('admin.companies.index');
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             Session::flash('error_message', 'Error adding company');
             return redirect()->back();
         }
@@ -81,7 +90,7 @@ class CompanyController extends Controller
 
             $company->clients()->sync($request->clients);
             $company->providers()->sync($request->providers);
-            
+
             $company->save();
 
             Session::flash('ok_message', 'Company successfully updated!');
@@ -96,8 +105,6 @@ class CompanyController extends Controller
 
     public function delete(Request $request)
     {
-        return response(1, 200);
-        die();
         try {
             $this->validate($request, [
                 'id' => 'required'
@@ -107,9 +114,9 @@ class CompanyController extends Controller
 
             $company->forceDelete();
 
-            return response(1, 200)->json(['result' => 'success']);
+            return response(1, 200);
         } catch (\Exception $e) {
-            return response()->json(['id' => $request->id]);
+            return response(0, 400);
         }
     }
 }

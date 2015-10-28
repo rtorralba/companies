@@ -18,6 +18,16 @@
         {!! Form::text('name', null, ['class' => 'form-control']) !!}
     </div>
 
+    <div class="form-group">
+        {!! Form::label('clients[]', 'Clients:', ['class' => 'control-label']) !!}
+        {!! Form::select('clients[]', $companies, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('providers[]', 'Providers:', ['class' => 'control-label']) !!}
+        {!! Form::select('providers[]', $providers, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
+    </div>
+
     {!! Form::submit('Add company', ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
