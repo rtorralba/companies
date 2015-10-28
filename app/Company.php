@@ -18,4 +18,9 @@ class Company extends Model
     {
         return $this->belongsToMany('App\Company', 'companies_providers', 'company_id', 'provider_id');
     }
+
+    public function agreements()
+    {
+        return $this->belongsToMany('App\Agreements', 'companies_agreements', 'company_id', 'agreement_id');
+    }
 }
