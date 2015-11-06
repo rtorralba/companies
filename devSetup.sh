@@ -20,5 +20,5 @@ chmod -R 775 storage
 echo "Fixing bootstrap/cache folder perms..."
 chmod -R 775 bootstrap/cache/
 
-echo "Fixing generating laravel key..."
+echo "Generating laravel key..."
 php artisan key:generate
